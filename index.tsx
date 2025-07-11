@@ -155,7 +155,6 @@ const RentalCalculatorSlide = () => {
             <h1>Calculadora de Alquiler</h1>
             <p>Estime el costo mensual de su plan. El valor es referencial y se ajustará a sus necesidades. <strong>Escáner doble óptico gratuito en todos los planes.</strong></p>
             <div className="grid">
-                {/* Controles de la calculadora (selectores, slider) */}
                 <div className="calculator-control">
                     <label htmlFor="printType">Tipo de Impresión</label>
                     <select id="printType" value={printType} onChange={e => setPrintType(e.target.value)}>
@@ -267,9 +266,8 @@ const VideoModal = ({ videoUrl, onClose }) => {
 };
 
 const WhatsappFAB = () => (
-    // Reemplaza el enlace de abajo con tu enlace de Walink
     <a 
-        href="https://wa.link/rh0qwy" /* <-- AQUÍ VA TU ENLACE */
+        href="https://wa.link/rh0qwy" /* <-- TU ENLACE YA ESTÁ AQUÍ */
         target="_blank" 
         rel="noopener noreferrer" 
         className="whatsapp-fab" 

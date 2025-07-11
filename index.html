@@ -187,11 +187,16 @@
         .form-button { background-color: var(--secondary-green); color: white; border: none; padding: 12px 25px; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
         .form-button:hover { background-color: #62a835; }
         .form-button:disabled { background-color: #ccc; cursor: not-allowed; }
-
+        
+        /* --- Calculator Result Improved --- */
         .calculator-result { margin-top: 20px; padding: 20px; background-color: var(--light-gray); border-radius: 8px; text-align: center; border: 1px solid #ddd; }
         .calculator-result h3 { margin-top: 0; color: var(--primary-blue); }
-        .calculator-result p { font-size: 1.8em; font-weight: bold; color: var(--secondary-green); margin: 5px 0; }
-        .calculator-result .detail { font-size: 0.9em; color: var(--dark-gray); }
+        .result-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px 15px; text-align: right; max-width: 350px; margin: 15px auto; }
+        .result-grid div { font-size: 1.1em; }
+        .result-grid .total-label { font-weight: bold; font-size: 1.3em; color: var(--primary-blue); }
+        .result-grid .total-amount { font-weight: bold; font-size: 1.3em; color: var(--secondary-green); }
+        .calculator-result .detail { font-size: 0.9em; color: var(--dark-gray); margin-top: 10px; display: block; }
+        
         .form-message { padding: 10px; margin-top: 15px; border-radius: 5px; text-align: center; font-weight: bold; }
         .form-message.success { background-color: #d4edda; color: #155724; }
         .form-message.error { background-color: #f8d7da; color: #721c24; }
@@ -206,7 +211,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #edf7f1;
+            background-color: #25D366;
             color: white;
             width: 60px;
             height: 60px;
@@ -221,8 +226,8 @@
         }
 
         .whatsapp-fab .icon img {
-            width: 73px;
-            height: 72px;
+            width: 32px;
+            height: 32px;
         }
 
         .whatsapp-fab:hover {
@@ -272,14 +277,20 @@
             .navigation-controls { position: fixed; bottom: 0; left: 0; width: 100%; transform: none; justify-content: space-between; border-radius: 0; border-top: 1px solid #e0e0e0; padding: 12px 15px; box-sizing: border-box; }
             
             .whatsapp-fab { bottom: 90px; right: 20px; width: 55px; height: 55px; }
-            .whatsapp-fab .icon svg { width: 28px; height: 28px; }
+            .whatsapp-fab .icon img { width: 28px; height: 28px; }
             .whatsapp-fab::after { display: none; } /* Hide tooltip on mobile where hover is not a primary interaction */
 
             .video-modal-close { right: 5px; }
         }
 
     </style>
-
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
 </head>
 <body>
     <div id="root"></div>
