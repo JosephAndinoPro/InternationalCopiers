@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Copiadoras Ricoh - International Copiers</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #004AAD;
+            --secondary-green: #7AC943;
+            --white: #FFFFFF;
+            --light-gray: #f4f4f4;
+            --dark-gray: #333333;
+            --text-on-dark: #FFFFFF;
+            --danger-red: #d9534f;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #root {
+            width: 100%;
+            max-width: 1024px;
+            height: 768px;
+            max-height: 100vh;
+            background-color: var(--white);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            /* Bottom padding for nav controls space */
+            padding: 20px 40px 100px 40px; 
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        
+        .slide-content {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        /* --- Navigation Controls --- */
+        .navigation-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .nav-button {
+            background-color: var(--primary-blue);
+            color: var(--text-on-dark);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background-color: #003a8c;
+        }
+
+        .nav-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* --- Cover Slide --- */
+        .cover-slide { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; }
+        .cover-slide .main-logo img { max-width: 200px; max-height: 200px; height: auto; width: auto; display: block; margin-bottom: 30px; }
+        .cover-slide h1 { font-size: 3em; color: var(--primary-blue); margin: 0.2em 0; }
+        .cover-slide h2 { font-size: 1.5em; color: var(--dark-gray); font-weight: normal; }
+
+        /* --- Content Slide (general) --- */
+        .content-slide { padding-top: 70px; }
+        .content-slide h1 { color: var(--primary-blue); border-bottom: 2px solid var(--secondary-green); padding-bottom: 10px; margin-bottom: 20px; }
+        .content-slide h2 { color: var(--primary-blue); font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid var(--light-gray); padding-bottom: 5px; }
+        .content-slide p, .content-slide ul { font-size: 1.1em; line-height: 1.6; margin-bottom: 15px; }
+        .content-slide ul { list-style-position: inside; padding-left: 0; }
+        .content-slide li { margin-bottom: 8px; }
+        .contact-info strong { color: var(--primary-blue); }
+
+        /* --- Product Slide --- */
+        .product-slide { padding-top: 70px; }
+        .product-slide h2 { color: var(--primary-blue); font-size: 2em; margin-bottom: 20px; text-align: center; }
+        .product-details-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 30px; align-items: flex-start; }
+        
+        .product-image-container { position: relative; cursor: pointer; border-radius: 8px; overflow: hidden; background-color: var(--light-gray); border: 1px solid #ddd; padding: 10px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; min-height: 320px; }
+        .product-actual-image { max-width: 100%; max-height: 300px; width: auto; height: auto; object-fit: contain; display: block; transition: transform 0.3s ease; }
+        .product-image-container:hover .product-actual-image { transform: scale(1.05); }
+
+        .play-icon-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background-color: rgba(0, 0, 0, 0.5); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+        .product-image-container:hover .play-icon-overlay { opacity: 1; }
+
+        .stock-status-badge { position: absolute; top: 15px; right: 15px; background-color: var(--danger-red); color: white; padding: 5px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; z-index: 2; transform: rotate(15deg); }
+
+        .product-info .price { font-size: 1.8em; font-weight: bold; color: var(--secondary-green); margin-bottom: 20px; }
+        .product-info .out-of-stock-text { font-size: 1.8em; font-weight: bold; color: var(--danger-red); margin-bottom: 20px; }
+        .product-info p { margin: 5px 0 15px 0; font-size: 1.1em; }
+        .product-info strong { color: var(--primary-blue); }
+        .product-info .icon { margin-right: 8px; font-size: 1.1em; }
+        .product-info ul { list-style: none; padding: 0; }
+        .product-info ul li { margin-bottom: 8px; font-size: 1em; }
+        .product-benefits { margin-top: 20px; background-color: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 4px solid var(--secondary-green); }
+        .product-benefits h3 { margin-top: 0; color: var(--primary-blue); font-size: 1.2em; }
+        .product-benefits ul li .icon { color: var(--secondary-green); }
+
+        /* --- Price Summary Slide --- */
+        .price-summary-slide table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95em; }
+        .price-summary-slide th, .price-summary-slide td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: middle; }
+        .price-summary-slide th { background-color: var(--primary-blue); color: var(--text-on-dark); font-size: 1.1em; }
+        .price-summary-slide tr:nth-child(even) { background-color: var(--light-gray); }
+        .price-summary-slide tr.out-of-stock-row { opacity: 0.6; background-color: #eee; }
+        .price-summary-slide .price-col { font-weight: bold; color: var(--secondary-green); }
+        .stock-status-cell .available { color: #28a745; font-weight: bold; }
+        .stock-status-cell .out-of-stock { color: var(--danger-red); font-weight: bold; }
+
+        /* --- Video Modal --- */
+        .video-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px); }
+        .video-modal-content { position: relative; width: 90%; max-width: 960px; }
+        .video-modal-content .video-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; }
+        .video-modal-content iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; border: none; }
+        .video-modal-close { position: absolute; top: -45px; right: -15px; background: transparent; border: none; color: white; font-size: 40px; cursor: pointer; line-height: 1; }
+
+        /* --- Form & Calculator Slides --- */
+        .form-slide .grid, .calculator-slide .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .form-group, .calculator-control { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .form-group.full-width, .calculator-control.full-width { grid-column: 1 / -1; }
+        .form-group label, .calculator-control label { margin-bottom: 5px; font-weight: bold; color: var(--primary-blue); }
+        .form-group input, .form-group select, .form-group textarea, .calculator-control input, .calculator-control select { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; background-color: #fff; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-button { background-color: var(--secondary-green); color: white; border: none; padding: 12px 25px; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+        .form-button:hover { background-color: #62a835; }
+        .form-button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        .calculator-result { margin-top: 20px; padding: 20px; background-color: var(--light-gray); border-radius: 8px; text-align: center; border: 1px solid #ddd; }
+        .calculator-result h3 { margin-top: 0; color: var(--primary-blue); }
+        .calculator-result p { font-size: 1.8em; font-weight: bold; color: var(--secondary-green); margin: 5px 0; }
+        .calculator-result .detail { font-size: 0.9em; color: var(--dark-gray); }
+        .form-message { padding: 10px; margin-top: 15px; border-radius: 5px; text-align: center; font-weight: bold; }
+        .form-message.success { background-color: #d4edda; color: #155724; }
+        .form-message.error { background-color: #f8d7da; color: #721c24; }
+        
+        input[type="range"] { -webkit-appearance: none; width: 100%; height: 8px; background: #ddd; border-radius: 5px; outline: none; opacity: 0.7; transition: opacity .2s; }
+        input[type="range"]:hover { opacity: 1; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: var(--primary-blue); cursor: pointer; border-radius: 50%; }
+        input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; background: var(--primary-blue); cursor: pointer; border-radius: 50%; border:none; }
+        
+        /* --- WhatsApp FAB (Improved) --- */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #edf7f1;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-fab .icon img {
+            width: 73px;
+            height: 72px;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+        }
+
+        /* Tooltip on hover */
+        .whatsapp-fab::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 100%;
+            margin-right: 15px;
+            padding: 6px 12px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            pointer-events: none;
+        }
+
+        .whatsapp-fab:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            body { align-items: flex-start; }
+            #root { height: auto; min-height: 100vh; max-width: 100%; border-radius: 0; box-shadow: none; overflow: visible; }
+            .slide-container { padding: 15px 20px 120px 20px; } /* More padding for fixed nav */
+            .logo { top: 15px; left: 15px; }
+            .logo img { height: 40px; }
+            
+            .product-details-grid { grid-template-columns: 1fr; }
+            .product-image-container { min-height: 250px; margin-bottom: 20px; }
+            .product-actual-image { max-height: 220px; }
+            .form-slide .grid, .calculator-slide .grid { grid-template-columns: 1fr; }
+
+            .navigation-controls { position: fixed; bottom: 0; left: 0; width: 100%; transform: none; justify-content: space-between; border-radius: 0; border-top: 1px solid #e0e0e0; padding: 12px 15px; box-sizing: border-box; }
+            
+            .whatsapp-fab { bottom: 90px; right: 20px; width: 55px; height: 55px; }
+            .whatsapp-fab .icon svg { width: 28px; height: 28px; }
+            .whatsapp-fab::after { display: none; } /* Hide tooltip on mobile where hover is not a primary interaction */
+
+            .video-modal-close { right: 5px; }
+        }
+
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="index.tsx"></script>
+</body>
+</html>
