@@ -205,7 +205,7 @@ const QuoteFormSlide = ({ products }) => {
         e.preventDefault();
         setStatus({ submitting: true, message: '', type: '' });
         // REEMPLAZA ESTA URL con tu webhook de Make.com
-        const webhookUrl = 'https://hook.us1.make.com/xxxxxxxxxxxxxxxxxxxxxxxx';
+        const webhookUrl = 'https://hook.us2.make.com/cf22g6pvi83eov1ul73iv5wte4ueao8h';
 
         fetch(webhookUrl, {
             method: 'POST',
