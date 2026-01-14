@@ -11,7 +11,7 @@
         "speedPPM": 30,
         "functions": [
             "Impresión",
-            "Escaneo",
+            "Escaneo a color",
             "Copia"
         ],
         "paperSize": [
@@ -36,9 +36,8 @@
         "speedPPM": 35,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax (opcional)"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A4"
@@ -53,7 +52,7 @@
     {
         "id": "mp2555",
         "name": "Ricoh MP 2555",
-        "priceUSD": 980,
+        "priceUSD": 680,
         "stock": "disponible",
         "quantity": 3,
         "videoUrl": "plFbhqrOF9s",
@@ -62,7 +61,7 @@
         "speedPPM": 25,
         "functions": [
             "Impresión",
-            "Escaneo",
+            "Escaneo a color",
             "Copia"
         ],
         "paperSize": [
@@ -88,9 +87,8 @@
         "speedPPM": 30,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -106,7 +104,7 @@
     {
         "id": "mp4055",
         "name": "Ricoh MP 4055",
-        "priceUSD": 1410,
+        "priceUSD": 1310,
         "stock": "disponible",
         "quantity": 2,
         "videoUrl": "t7X9a4yUW5A",
@@ -115,9 +113,8 @@
         "speedPPM": 40,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -133,7 +130,7 @@
     {
         "id": "mp5054",
         "name": "Ricoh MP 5054",
-        "priceUSD": 1310,
+        "priceUSD": 1350,
         "stock": "disponible",
         "quantity": 2,
         "videoUrl": "iCvsiCR24N8",
@@ -142,9 +139,8 @@
         "speedPPM": 50,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -160,7 +156,7 @@
     {
         "id": "mp5055",
         "name": "Ricoh MP 5055",
-        "priceUSD": 1640,
+        "priceUSD": 1540,
         "stock": "disponible",
         "quantity": 3,
         "videoUrl": "SBSFICiZDUA",
@@ -169,9 +165,8 @@
         "speedPPM": 50,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -187,7 +182,7 @@
     {
         "id": "mp6055",
         "name": "Ricoh MP 6055",
-        "priceUSD": 1895,
+        "priceUSD": 1690,
         "stock": "disponible",
         "quantity": 2,
         "videoUrl": "T6Gj-hazaSU",
@@ -196,9 +191,8 @@
         "speedPPM": 60,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax (opcional)"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -223,7 +217,7 @@
         "speedPPM": 75,
         "functions": [
             "Impresión",
-            "Escaneo",
+            "Escaneo a color",
             "Copia"
         ],
         "paperSize": [
@@ -249,9 +243,8 @@
         "speedPPM": 45,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -276,9 +269,8 @@
         "speedPPM": 55,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax (opcional)"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
@@ -294,7 +286,7 @@
     {
         "id": "mpc6004ex",
         "name": "Ricoh MP C6004ex",
-        "priceUSD": 1890,
+        "priceUSD": 1790,
         "stock": "disponible",
         "quantity": 1,
         "videoUrl": "4eyeD3JW-98",
@@ -303,9 +295,8 @@
         "speedPPM": 60,
         "functions": [
             "Impresión",
-            "Escaneo",
-            "Copia",
-            "Fax"
+            "Escaneo a color",
+            "Copia"
         ],
         "paperSize": [
             "A3",
