@@ -6,22 +6,22 @@ const { useState, useEffect, useRef, useMemo, useCallback } = React;
 // Para modificar el inventario, edita el archivo productos.json
 const productData = [
     // B&N - Disponibles 2026
-    { id: 'mp2555', name: 'Ricoh MP 2555', priceUSD: 980, stock: 'disponible', quantity: 3, videoUrl: 'plFbhqrOF9s', image: 'images/8.jpg', type: 'B/N', speedPPM: 25, functions: ['Impresión', 'Escaneo', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Alimentador de documentos de alta velocidad', 'Seguridad empresarial mejorada', 'Operación silenciosa para ambientes de trabajo'] },
-    { id: 'mp4055', name: 'Ricoh MP 4055', priceUSD: 1410, stock: 'disponible', quantity: 2, videoUrl: 't7X9a4yUW5A', image: 'images/9.jpg', type: 'B/N', speedPPM: 40, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Alto rendimiento para grupos de trabajo medianos', 'Opciones de acabado profesional disponibles', 'Eficiencia energética clase A'] },
-    { id: 'mp5054', name: 'Ricoh MP 5054', priceUSD: 1310, stock: 'disponible', quantity: 2, videoUrl: 'iCvsiCR24N8', image: 'images/13.jpg', type: 'B/N', speedPPM: 50, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Rendimiento robusto para alto volumen', 'Calidad de impresión profesional 1200 dpi', 'Panel de control personalizable'] },
-    { id: 'mp5055', name: 'Ricoh MP 5055', priceUSD: 1640, stock: 'disponible', quantity: 3, videoUrl: 'SBSFICiZDUA', image: 'images/13.jpg', type: 'B/N', speedPPM: 50, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Productividad superior para oficinas exigentes', 'Calidad de impresión profesional garantizada', 'Administración remota vía web'] },
-    { id: 'mp6055', name: 'Ricoh MP 6055', priceUSD: 1895, stock: 'disponible', quantity: 2, videoUrl: 'T6Gj-hazaSU', image: 'images/14.jpg', type: 'B/N', speedPPM: 60, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax (opcional)'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Máxima productividad para departamentos grandes', 'Tecnología de imagen de última generación', 'Costo por página ultra competitivo'] },
+    { id: 'mp2555', name: 'Ricoh MP 2555', priceUSD: 680, stock: 'disponible', quantity: 3, videoUrl: 'plFbhqrOF9s', image: 'images/8.jpg', type: 'B/N', speedPPM: 25, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Alimentador de documentos de alta velocidad', 'Seguridad empresarial mejorada', 'Operación silenciosa para ambientes de trabajo'] },
+    { id: 'mp4055', name: 'Ricoh MP 4055', priceUSD: 1310, stock: 'disponible', quantity: 2, videoUrl: 't7X9a4yUW5A', image: 'images/9.jpg', type: 'B/N', speedPPM: 40, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Alto rendimiento para grupos de trabajo medianos', 'Opciones de acabado profesional disponibles', 'Eficiencia energética clase A'] },
+    { id: 'mp5054', name: 'Ricoh MP 5054', priceUSD: 1350, stock: 'disponible', quantity: 2, videoUrl: 'iCvsiCR24N8', image: 'images/13.jpg', type: 'B/N', speedPPM: 50, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Rendimiento robusto para alto volumen', 'Calidad de impresión profesional 1200 dpi', 'Panel de control personalizable'] },
+    { id: 'mp5055', name: 'Ricoh MP 5055', priceUSD: 1540, stock: 'disponible', quantity: 3, videoUrl: 'SBSFICiZDUA', image: 'images/13.jpg', type: 'B/N', speedPPM: 50, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Productividad superior para oficinas exigentes', 'Calidad de impresión profesional garantizada', 'Administración remota vía web'] },
+    { id: 'mp6055', name: 'Ricoh MP 6055', priceUSD: 1690, stock: 'disponible', quantity: 2, videoUrl: 'T6Gj-hazaSU', image: 'images/14.jpg', type: 'B/N', speedPPM: 60, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Máxima productividad para departamentos grandes', 'Tecnología de imagen de última generación', 'Costo por página ultra competitivo'] },
     // B&N - Agotados
-    { id: 'mp301', name: 'Ricoh MP 301', priceUSD: 450, stock: 'agotado', quantity: 0, videoUrl: 'AxODTHVNfBM', image: 'images/17.jpg', type: 'B/N', speedPPM: 30, functions: ['Impresión', 'Escaneo', 'Copia'], paperSize: ['A4'], status: 'Remanufacturado', benefits: ['Compacto y eficiente para espacios reducidos', 'Ideal para pequeñas oficinas y emprendimientos', 'Consumibles de bajo costo operativo'] },
-    { id: 'im350', name: 'Ricoh IM 350', priceUSD: 475, stock: 'agotado', quantity: 0, videoUrl: 'EwXqXBcVQrM', image: 'images/10.jpg', type: 'B/N', speedPPM: 35, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax (opcional)'], paperSize: ['A4'], status: 'Remanufacturado', benefits: ['Pantalla táctil intuitiva de última generación', 'Conectividad WiFi y Ethernet avanzada', 'Modo eco con bajo consumo energético'] },
-    { id: 'mp3055', name: 'Ricoh MP 3055', priceUSD: 1200, stock: 'agotado', quantity: 0, videoUrl: 't7X9a4yUW5A', image: 'images/11.jpg', type: 'B/N', speedPPM: 30, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Panel táctil a color personalizable', 'Integración nativa con la nube', 'Construcción robusta de alta durabilidad'] },
-    { id: 'mp7503', name: 'Ricoh MP 7503', priceUSD: 2970, stock: 'agotado', quantity: 0, videoUrl: '05wFKCMdcKQ', image: 'images/16.jpg', type: 'B/N', speedPPM: 75, functions: ['Impresión', 'Escaneo', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Velocidad extrema para producción ligera', 'Capacidad de papel expandible hasta 8,000 hojas', 'Durabilidad de grado industrial'] },
+    { id: 'mp301', name: 'Ricoh MP 301', priceUSD: 450, stock: 'agotado', quantity: 0, videoUrl: 'AxODTHVNfBM', image: 'images/17.jpg', type: 'B/N', speedPPM: 30, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A4'], status: 'Remanufacturado', benefits: ['Compacto y eficiente para espacios reducidos', 'Ideal para pequeñas oficinas y emprendimientos', 'Consumibles de bajo costo operativo'] },
+    { id: 'im350', name: 'Ricoh IM 350', priceUSD: 475, stock: 'agotado', quantity: 0, videoUrl: 'EwXqXBcVQrM', image: 'images/10.jpg', type: 'B/N', speedPPM: 35, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A4'], status: 'Remanufacturado', benefits: ['Pantalla táctil intuitiva de última generación', 'Conectividad WiFi y Ethernet avanzada', 'Modo eco con bajo consumo energético'] },
+    { id: 'mp3055', name: 'Ricoh MP 3055', priceUSD: 1200, stock: 'agotado', quantity: 0, videoUrl: 't7X9a4yUW5A', image: 'images/11.jpg', type: 'B/N', speedPPM: 30, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Panel táctil a color personalizable', 'Integración nativa con la nube', 'Construcción robusta de alta durabilidad'] },
+    { id: 'mp7503', name: 'Ricoh MP 7503', priceUSD: 2970, stock: 'agotado', quantity: 0, videoUrl: '05wFKCMdcKQ', image: 'images/16.jpg', type: 'B/N', speedPPM: 75, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Velocidad extrema para producción ligera', 'Capacidad de papel expandible hasta 8,000 hojas', 'Durabilidad de grado industrial'] },
     // Color - Disponible
-    { id: 'mpc4504ex', name: 'Ricoh MP C4504ex', priceUSD: 1490, stock: 'disponible', quantity: 1, videoUrl: 'hoaq5mBaDV4', image: 'images/4.jpg', type: 'Color', speedPPM: 45, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Reproducción de colores vibrantes y precisos', 'Smart Operation Panel de alta resolución', 'Conectividad LAN, WiFi y móvil integrada'] },
+    { id: 'mpc4504ex', name: 'Ricoh MP C4504ex', priceUSD: 1490, stock: 'disponible', quantity: 1, videoUrl: 'hoaq5mBaDV4', image: 'images/4.jpg', type: 'Color', speedPPM: 45, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Reproducción de colores vibrantes y precisos', 'Smart Operation Panel de alta resolución', 'Conectividad LAN, WiFi y móvil integrada'] },
     // Color - Disponibles
-    { id: 'mpc6004ex', name: 'Ricoh MP C6004ex', priceUSD: 1890, stock: 'disponible', quantity: 1, videoUrl: '4eyeD3JW-98', image: 'images/6.jpg', type: 'Color', speedPPM: 60, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Velocidad de color líder en su clase', 'Calidad profesional para marketing y diseño', 'Modo suspensión con ahorro energético del 85%'] },
+    { id: 'mpc6004ex', name: 'Ricoh MP C6004ex', priceUSD: 1790, stock: 'disponible', quantity: 1, videoUrl: '4eyeD3JW-98', image: 'images/6.jpg', type: 'Color', speedPPM: 60, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Velocidad de color líder en su clase', 'Calidad profesional para marketing y diseño', 'Modo suspensión con ahorro energético del 85%'] },
     // Color - Agotados
-    { id: 'mpc5503', name: 'Ricoh MPC 5503', priceUSD: 1290, stock: 'agotado', quantity: 0, videoUrl: '4x8HN9GfEa4', image: 'images/2.jpg', type: 'Color', speedPPM: 55, functions: ['Impresión', 'Escaneo', 'Copia', 'Fax (opcional)'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Calidad de color profesional superior', 'Panel táctil intuitivo tipo smartphone', 'Certificación de eficiencia energética'] }
+    { id: 'mpc5503', name: 'Ricoh MPC 5503', priceUSD: 1290, stock: 'agotado', quantity: 0, videoUrl: '4x8HN9GfEa4', image: 'images/2.jpg', type: 'Color', speedPPM: 55, functions: ['Impresión', 'Escaneo a color', 'Copia'], paperSize: ['A3', 'A4'], status: 'Remanufacturado', benefits: ['Calidad de color profesional superior', 'Panel táctil intuitivo tipo smartphone', 'Certificación de eficiencia energética'] }
 ];
 
 const CoverSlide = () => (
@@ -164,81 +164,115 @@ const PriceSummarySlide = ({ products }) => {
 
 const RentalCalculatorSlide = () => {
     const bnTiers = [
-        { upTo: 1000, price: 0.050, minCharge: 50 },
         { upTo: 5000, price: 0.040 },
         { upTo: 10000, price: 0.030 },
         { upTo: 99999, price: 0.025 }
     ];
     const colorTiers = [
-        { upTo: 500, price: 0.130, minCharge: 65 },
         { upTo: 2000, price: 0.110 },
         { upTo: 5000, price: 0.090 },
         { upTo: 99999, price: 0.080 }
     ];
     const contractDiscounts = { 3: 1, 6: 0.98, 12: 0.95, 24: 0.92 };
 
-    const [printType, setPrintType] = useState('bn');
-    const [volume, setVolume] = useState(3000);
-    const [duration, setDuration] = useState(12);
+    // Estados para Blanco y Negro
+    const [bnVolume, setBnVolume] = useState(3000);
+    const [bnDuration, setBnDuration] = useState(12);
 
-    const calculation = useMemo(() => {
-        const tiers = printType === 'bn' ? bnTiers : colorTiers;
-        const tier = tiers.find(t => volume <= t.upTo);
+    // Estados para Color
+    const [colorVolume, setColorVolume] = useState(1500);
+    const [colorDuration, setColorDuration] = useState(12);
+
+    const bnCalculation = useMemo(() => {
+        const tier = bnTiers.find(t => bnVolume <= t.upTo);
         const costPerCopy = tier.price;
-        const discount = contractDiscounts[duration];
-
-        let subtotal = volume * costPerCopy;
-
-        if (tier.minCharge && subtotal < tier.minCharge) {
-            subtotal = tier.minCharge;
-        }
-
-        subtotal *= discount;
-
+        const discount = contractDiscounts[bnDuration];
+        let subtotal = bnVolume * costPerCopy * discount;
         const iva = subtotal * 0.15;
         const total = subtotal + iva;
-
         return { subtotal, iva, total, costPerCopy };
-    }, [printType, volume, duration]);
+    }, [bnVolume, bnDuration]);
+
+    const colorCalculation = useMemo(() => {
+        const tier = colorTiers.find(t => colorVolume <= t.upTo);
+        const costPerCopy = tier.price;
+        const discount = contractDiscounts[colorDuration];
+        let subtotal = colorVolume * costPerCopy * discount;
+        const iva = subtotal * 0.15;
+        const total = subtotal + iva;
+        return { subtotal, iva, total, costPerCopy };
+    }, [colorVolume, colorDuration]);
 
     return (
         <div className="slide-content content-slide calculator-slide">
             <h1>Calculadora de Alquiler</h1>
             <p>Estime el costo mensual de su plan de alquiler. El valor es referencial y se ajustará a sus necesidades específicas. <strong>Incluye escáner doble óptico gratuito en todos los planes.</strong></p>
-            <div className="grid">
-                <div className="calculator-control">
-                    <label htmlFor="printType">Tipo de Impresión</label>
-                    <select id="printType" value={printType} onChange={e => setPrintType(e.target.value)}>
-                        <option value="bn">Blanco y Negro</option>
-                        <option value="color">Color</option>
-                    </select>
+
+            <div className="calculator-dual-container">
+                {/* Calculadora Blanco y Negro */}
+                <div className="calculator-section bn-section">
+                    <h2><span className="icon">📄</span> Blanco y Negro</h2>
+                    <div className="calculator-controls">
+                        <div className="calculator-control">
+                            <label htmlFor="bnDuration">Duración del Contrato</label>
+                            <select id="bnDuration" value={bnDuration} onChange={e => setBnDuration(Number(e.target.value))}>
+                                <option value="3">3 Meses</option>
+                                <option value="6">6 Meses (2% desc.)</option>
+                                <option value="12">12 Meses (5% desc.)</option>
+                                <option value="24">24 Meses (8% desc.)</option>
+                            </select>
+                        </div>
+                        <div className="calculator-control">
+                            <label htmlFor="bnVolume">Volumen: {Number(bnVolume).toLocaleString('es-EC')} copias/mes</label>
+                            <input type="range" id="bnVolume" min="3000" max="20000" step="500" value={bnVolume} onChange={e => setBnVolume(Number(e.target.value))} />
+                        </div>
+                    </div>
+                    <div className="calculator-result">
+                        <div className="result-grid">
+                            <div>Subtotal:</div>
+                            <div>${bnCalculation.subtotal.toFixed(2)}</div>
+                            <div>IVA (15%):</div>
+                            <div>${bnCalculation.iva.toFixed(2)}</div>
+                            <div className="total-label">Total:</div>
+                            <div className="total-amount">${bnCalculation.total.toFixed(2)}</div>
+                        </div>
+                        <span className="detail">Costo por copia: ${bnCalculation.costPerCopy.toFixed(3)}</span>
+                    </div>
                 </div>
-                <div className="calculator-control">
-                    <label htmlFor="duration">Duración del Contrato</label>
-                    <select id="duration" value={duration} onChange={e => setDuration(Number(e.target.value))}>
-                        <option value="3">3 Meses</option>
-                        <option value="6">6 Meses (2% descuento)</option>
-                        <option value="12">12 Meses (5% descuento)</option>
-                        <option value="24">24 Meses (8% descuento)</option>
-                    </select>
-                </div>
-                <div className="calculator-control full-width">
-                    <label htmlFor="volume">Volumen Mensual: {Number(volume).toLocaleString('es-EC')} copias/impresiones</label>
-                    <input type="range" id="volume" min="500" max="20000" step="500" value={volume} onChange={e => setVolume(Number(e.target.value))} />
+
+                {/* Calculadora Color */}
+                <div className="calculator-section color-section">
+                    <h2><span className="icon">🎨</span> Color</h2>
+                    <div className="calculator-controls">
+                        <div className="calculator-control">
+                            <label htmlFor="colorDuration">Duración del Contrato</label>
+                            <select id="colorDuration" value={colorDuration} onChange={e => setColorDuration(Number(e.target.value))}>
+                                <option value="3">3 Meses</option>
+                                <option value="6">6 Meses (2% desc.)</option>
+                                <option value="12">12 Meses (5% desc.)</option>
+                                <option value="24">24 Meses (8% desc.)</option>
+                            </select>
+                        </div>
+                        <div className="calculator-control">
+                            <label htmlFor="colorVolume">Volumen: {Number(colorVolume).toLocaleString('es-EC')} copias/mes</label>
+                            <input type="range" id="colorVolume" min="1500" max="10000" step="500" value={colorVolume} onChange={e => setColorVolume(Number(e.target.value))} />
+                        </div>
+                    </div>
+                    <div className="calculator-result">
+                        <div className="result-grid">
+                            <div>Subtotal:</div>
+                            <div>${colorCalculation.subtotal.toFixed(2)}</div>
+                            <div>IVA (15%):</div>
+                            <div>${colorCalculation.iva.toFixed(2)}</div>
+                            <div className="total-label">Total:</div>
+                            <div className="total-amount">${colorCalculation.total.toFixed(2)}</div>
+                        </div>
+                        <span className="detail">Costo por copia: ${colorCalculation.costPerCopy.toFixed(3)}</span>
+                    </div>
                 </div>
             </div>
-            <div className="calculator-result">
-                <h3>Resumen de Costo Mensual Estimado</h3>
-                <div className="result-grid">
-                    <div>Subtotal:</div>
-                    <div>${calculation.subtotal.toFixed(2)}</div>
-                    <div>IVA (15%):</div>
-                    <div>${calculation.iva.toFixed(2)}</div>
-                    <div className="total-label">Total a Facturar:</div>
-                    <div className="total-amount">${calculation.total.toFixed(2)}</div>
-                </div>
-                <span className="detail">Costo por copia: ${calculation.costPerCopy.toFixed(3)} • Incluye equipo, tóner, repuestos y soporte técnico.</span>
-            </div>
+
+            <p className="calculator-note">💡 Incluye equipo, tóner, repuestos y soporte técnico en todos los planes.</p>
         </div>
     );
 };
