@@ -1,0 +1,321 @@
+[
+    {
+        "id": "mp301",
+        "name": "Ricoh MP 301",
+        "priceUSD": 450,
+        "stock": "agotado",
+        "quantity": 0,
+        "videoUrl": "AxODTHVNfBM",
+        "image": "images/17.jpg",
+        "type": "B/N",
+        "speedPPM": 30,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia"
+        ],
+        "paperSize": [
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Compacto y eficiente para espacios reducidos",
+            "Ideal para pequeñas oficinas y emprendimientos",
+            "Consumibles de bajo costo operativo"
+        ]
+    },
+    {
+        "id": "im350",
+        "name": "Ricoh IM 350",
+        "priceUSD": 475,
+        "stock": "agotado",
+        "quantity": 0,
+        "videoUrl": "EwXqXBcVQrM",
+        "image": "images/10.jpg",
+        "type": "B/N",
+        "speedPPM": 35,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax (opcional)"
+        ],
+        "paperSize": [
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Pantalla táctil intuitiva de última generación",
+            "Conectividad WiFi y Ethernet avanzada",
+            "Modo eco con bajo consumo energético"
+        ]
+    },
+    {
+        "id": "mp2555",
+        "name": "Ricoh MP 2555",
+        "priceUSD": 980,
+        "stock": "disponible",
+        "quantity": 3,
+        "videoUrl": "plFbhqrOF9s",
+        "image": "images/8.jpg",
+        "type": "B/N",
+        "speedPPM": 25,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Alimentador de documentos de alta velocidad",
+            "Seguridad empresarial mejorada",
+            "Operación silenciosa para ambientes de trabajo"
+        ]
+    },
+    {
+        "id": "mp3055",
+        "name": "Ricoh MP 3055",
+        "priceUSD": 1200,
+        "stock": "agotado",
+        "quantity": 0,
+        "videoUrl": "t7X9a4yUW5A",
+        "image": "images/11.jpg",
+        "type": "B/N",
+        "speedPPM": 30,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Panel táctil a color personalizable",
+            "Integración nativa con la nube",
+            "Construcción robusta de alta durabilidad"
+        ]
+    },
+    {
+        "id": "mp4055",
+        "name": "Ricoh MP 4055",
+        "priceUSD": 1410,
+        "stock": "disponible",
+        "quantity": 2,
+        "videoUrl": "t7X9a4yUW5A",
+        "image": "images/9.jpg",
+        "type": "B/N",
+        "speedPPM": 40,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Alto rendimiento para grupos de trabajo medianos",
+            "Opciones de acabado profesional disponibles",
+            "Eficiencia energética clase A"
+        ]
+    },
+    {
+        "id": "mp5054",
+        "name": "Ricoh MP 5054",
+        "priceUSD": 1310,
+        "stock": "disponible",
+        "quantity": 2,
+        "videoUrl": "iCvsiCR24N8",
+        "image": "images/13.jpg",
+        "type": "B/N",
+        "speedPPM": 50,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Rendimiento robusto para alto volumen",
+            "Calidad de impresión profesional 1200 dpi",
+            "Panel de control personalizable"
+        ]
+    },
+    {
+        "id": "mp5055",
+        "name": "Ricoh MP 5055",
+        "priceUSD": 1640,
+        "stock": "disponible",
+        "quantity": 3,
+        "videoUrl": "SBSFICiZDUA",
+        "image": "images/13.jpg",
+        "type": "B/N",
+        "speedPPM": 50,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Productividad superior para oficinas exigentes",
+            "Calidad de impresión profesional garantizada",
+            "Administración remota vía web"
+        ]
+    },
+    {
+        "id": "mp6055",
+        "name": "Ricoh MP 6055",
+        "priceUSD": 1895,
+        "stock": "disponible",
+        "quantity": 2,
+        "videoUrl": "T6Gj-hazaSU",
+        "image": "images/14.jpg",
+        "type": "B/N",
+        "speedPPM": 60,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax (opcional)"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Máxima productividad para departamentos grandes",
+            "Tecnología de imagen de última generación",
+            "Costo por página ultra competitivo"
+        ]
+    },
+    {
+        "id": "mp7503",
+        "name": "Ricoh MP 7503",
+        "priceUSD": 2970,
+        "stock": "agotado",
+        "quantity": 0,
+        "videoUrl": "05wFKCMdcKQ",
+        "image": "images/16.jpg",
+        "type": "B/N",
+        "speedPPM": 75,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Velocidad extrema para producción ligera",
+            "Capacidad de papel expandible hasta 8,000 hojas",
+            "Durabilidad de grado industrial"
+        ]
+    },
+    {
+        "id": "mpc4504ex",
+        "name": "Ricoh MP C4504ex",
+        "priceUSD": 1490,
+        "stock": "disponible",
+        "quantity": 1,
+        "videoUrl": "hoaq5mBaDV4",
+        "image": "images/4.jpg",
+        "type": "Color",
+        "speedPPM": 45,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Reproducción de colores vibrantes y precisos",
+            "Smart Operation Panel de alta resolución",
+            "Conectividad LAN, WiFi y móvil integrada"
+        ]
+    },
+    {
+        "id": "mpc5503",
+        "name": "Ricoh MPC 5503",
+        "priceUSD": 1290,
+        "stock": "agotado",
+        "quantity": 0,
+        "videoUrl": "4x8HN9GfEa4",
+        "image": "images/2.jpg",
+        "type": "Color",
+        "speedPPM": 55,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax (opcional)"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Calidad de color profesional superior",
+            "Panel táctil intuitivo tipo smartphone",
+            "Certificación de eficiencia energética"
+        ]
+    },
+    {
+        "id": "mpc6004ex",
+        "name": "Ricoh MP C6004ex",
+        "priceUSD": 1890,
+        "stock": "disponible",
+        "quantity": 1,
+        "videoUrl": "4eyeD3JW-98",
+        "image": "images/6.jpg",
+        "type": "Color",
+        "speedPPM": 60,
+        "functions": [
+            "Impresión",
+            "Escaneo",
+            "Copia",
+            "Fax"
+        ],
+        "paperSize": [
+            "A3",
+            "A4"
+        ],
+        "status": "Remanufacturado",
+        "benefits": [
+            "Velocidad de color líder en su clase",
+            "Calidad profesional para marketing y diseño",
+            "Modo suspensión con ahorro energético del 85%"
+        ]
+    }
+]
