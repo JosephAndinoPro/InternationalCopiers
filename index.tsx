@@ -164,14 +164,10 @@ const PriceSummarySlide = ({ products }) => {
 
 const RentalCalculatorSlide = () => {
     const bnTiers = [
-        { upTo: 5000, price: 0.040 },
-        { upTo: 10000, price: 0.030 },
-        { upTo: 99999, price: 0.025 }
+        { upTo: 99999, price: 0.039 }
     ];
     const colorTiers = [
-        { upTo: 2000, price: 0.110 },
-        { upTo: 5000, price: 0.090 },
-        { upTo: 99999, price: 0.080 }
+        { upTo: 99999, price: 0.099 }
     ];
     const contractDiscounts = { 3: 1, 6: 0.98, 12: 0.95, 24: 0.92 };
 
